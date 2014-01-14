@@ -24,12 +24,9 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.io.*;
 
-import sun.net.www.protocol.http.HttpURLConnection.TunnelState;
-
 import com.jme3.math.Vector3f;
 
 import eu.opends.car.Car;
-import eu.opends.car.LightTexturesContainer.TurnSignalState;
 import eu.opends.drivingTask.settings.SettingsLoader;
 import eu.opends.drivingTask.settings.SettingsLoader.Setting;
 import eu.opends.environment.XMLParser;
@@ -45,7 +42,7 @@ import eu.opends.main.Simulator;
  * 
  * @author Rafael Math
  */
-public class CANClient extends Thread
+public class CANClient_ori extends Thread
 {
 	// angle the real car wheel must be rotated for full lock in simulator 
 	private float maxSteeringAngle;	
@@ -60,14 +57,6 @@ public class CANClient extends Thread
 	private PrintWriter printWriter;
 	private Socket socket;
 	
-	//Neu hinzugefuegte Variablen
-	private File outputFile;
-	private File inputFile;
-	private String lineSeperator;
-	private FileWriter writer;
-	private BufferedReader reader;
-	private StringBuffer outputMessage;
-	
 	
 	/**
 	 * Creates a new TCP connection with the CAN-Interface at the given IP and port
@@ -75,7 +64,7 @@ public class CANClient extends Thread
 	 * @param sim
 	 * 			The simulator
 	 */
-	public CANClient(Simulator sim)
+	public CANClient_ori(Simulator sim)
     {
 		super();
 		
@@ -88,20 +77,34 @@ public class CANClient extends Thread
 		timeOfLastFire = new GregorianCalendar();
 		
 		SettingsLoader settingsLoader = Simulator.getDrivingTask().getSettingsLoader();
-		//String ip = settingsLoader.getSetting(Setting.CANInterface_ip, SimulationDefaults.CANInterface_ip);
-		//int port = settingsLoader.getSetting(Setting.CANInterface_port, SimulationDefaults.CANInterface_port);
+		String ip = settingsLoader.getSetting(Setting.CANInterface_ip, SimulationDefaults.CANInterface_ip);
+		int port = settingsLoader.getSetting(Setting.CANInterface_port, SimulationDefaults.CANInterface_port);
 		framerate = settingsLoader.getSetting(Setting.CANInterface_updateRate, SimulationDefaults.CANInterface_updateRate);
 		maxSteeringAngle = settingsLoader.getSetting(Setting.CANInterface_maxSteeringAngle, SimulationDefaults.CANInterface_maxSteeringAngle); 
 		
-		lineSeperator = System.getProperty("line.separator");
-		outputFile = new File("outtest.txt");
-		inputFile = new File("intest.txt");
-		outputMessage = new StringBuffer(50);	//50 als erster Test wenn mehr Werte kommen sollte die Zahl groesser gewaehlt werden
+		//("127.0.0.1", 4711, 1);
+		//("192.168.1.2", 4711, 20);
+		//("172.16.5.46", 4711, 20);
+		//("172.16.5.46", 4711, 1);
+		
+		try {
+
+			
+			// connect to Server
+			socket = new Socket(ip,port);
+			socket.setSoTimeout(10);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println("No TCP connection possible to CAN-Interface at " + ip + ":" + port);
+			errorOccurred = true;
+		}
     }
 	
     
 	/**
-	 * Werten Parameter aus einer textdatei aus um den Simulator entsprechend anzupassen
+	 * Listens for incoming CAN instructions (as XML), such as gas, brake, steering angle, 
+	 * reset and change view, which will be forwarded to the XML-parser
 	 */
 	@Override
 	public void run() 
@@ -111,54 +114,21 @@ public class CANClient extends Thread
 		while(!stoprequested && !errorOccurred)
 		{
 			try {
-				reader = new BufferedReader(new FileReader(inputFile));
-				//Motor an oder aus
-				String zeile = reader.readLine();
-				if (zeile != null)
-				{
-					//Pruefen ob Motor an oder aus
-					int enOn = Integer.parseInt(zeile);
-					boolean engineOn = enOn == 0 ? false : true;
-					if(engineOn != car.isEngineOn())
-					{
-						car.setEnginOn(engineOn);
-					}
-				}
-				//Licht Status
-				zeile = reader.readLine();
-				if (zeile != null)
-				{
-					int lightIntensity = Integer.parseInt(zeile);
-					car.setLightState(lightIntensity);
-					car.toggleLight();
-					System.out.println(lightIntensity);
-					
-				}
-				//Blinker links
-				zeile = reader.readLine();
-				int blkLeft;
-				if (zeile != null)
-				{
-					blkLeft = Integer.parseInt(zeile);
-					if (blkLeft != 0)	car.setTurnSignal(TurnSignalState.LEFT);
-					else				car.setTurnSignal(TurnSignalState.OFF);
-					
-				}
-				//Blinker rechts
-				zeile = reader.readLine();
-				if (zeile != null)
-				{
-					int blkright = Integer.parseInt(zeile);
-					if(blkright != 0)	car.setTurnSignal(TurnSignalState.RIGHT);
-					
-				}
+
+				// delete "NUL" at the end of each line
+				String message = readMessage(socket).replace("\0", "");
 				
+				// print XML instruction
+				//System.out.println(message);
 				
-				reader.close();				
-			} catch (IOException e) {
+				// parse and evaluate XML instruction
+				XMLParser parser = new XMLParser("<CAN>" + message + "</CAN>");
+				//TODO kommentar entfernen parser.evalCANInstruction(sim,this); 
+				
+			} catch (SocketException e) {
 				
 				// will be thrown if e.g. server was shut down
-				System.err.println("Fehler beim Auslesen von Input Daten");
+				System.err.println("Socket error: Connection to CAN-Interface has to be closed");
 				errorOccurred = true;
 				
 			} catch (Exception e) {
@@ -169,14 +139,38 @@ public class CANClient extends Thread
 				updateSteeringAngle();
 		}
 		
+		// close TCP connection to CAN-Interface if connected at all
+		try {
+			if ((socket != null) && (printWriter != null))
+			{
+				// wait for 10 ms
+				try {Thread.sleep(100);} 
+				catch (InterruptedException e){}
+
+				printWriter.print("exit");
+				printWriter.flush();
+				
+				// close socket connection
+				printWriter.close();
+				socket.close();
+				
+				System.out.println("Connection to CAN-Interface closed");
+			}
+		} catch (Exception ex) {
+			System.err.println("Could not close connection to CAN-Interface");
+		}
 	}
 
 	
 	/**
-	 * Schreibt Parameter des Simulates in textdatei die dann von externen Programm auf den CAN geschrieben werden
+	 * Sends car data to the CAN-Interface, such as heading, geo coordinates and speed.
 	 */
 	public synchronized void sendCarData()
 	{
+		// break, if no connection established
+		if(socket == null || errorOccurred)
+			return;
+		
 		// generate time stamp
 		Calendar currentTime = new GregorianCalendar();
 		
@@ -184,27 +178,21 @@ public class CANClient extends Thread
 		if(forwardEvent(currentTime))
 		{
 			
-			float speed = ((float) car.getCurrentSpeedKmhRounded());  // in km/h
-			//float heading = car.getHeadingDegree();       // 0..360 degree
+			float speed = ((float) car.getCurrentSpeedKmhRounded());  // in kph
+			float heading = car.getHeadingDegree();       // 0..360 degree
 			Vector3f geoPosition = car.getGeoPosition();
 			float latitude = geoPosition.getX();          // N-S position in model coordinates
 			float longitude = geoPosition.getY();         // W-E position in model coordinates
-			float tspeed = ((float) car.getCurrentSpeedKmh());	//TODO muss noch rausgefunden werden
-			int blk_left = car.getTurnSignal() == TurnSignalState.LEFT || car.getTurnSignal() == TurnSignalState.BOTH ? 1 : 0;
-			int blk_right = car.getTurnSignal() == TurnSignalState.RIGHT || car.getTurnSignal() == TurnSignalState.BOTH ? 1 : 0;
-			
-			outputMessage.delete(0, outputMessage.length());
+
+
 			try { 	
-				writer = new FileWriter(outputFile);
-				outputMessage.append(speed).append(lineSeperator);			//Geschwindigkeit
-				outputMessage.append(tspeed).append(lineSeperator);			//Drehzahl
-				outputMessage.append(blk_left).append(lineSeperator);		//blinker links
-				outputMessage.append(blk_right).append(lineSeperator);		//blinker rechts
-				outputMessage.append(latitude).append(lineSeperator);		//Latitude
-				outputMessage.append(longitude).append(lineSeperator);		//Longitude
-				writer.write(outputMessage.toString());
-				writer.flush();
-				writer.close();
+
+			 	// send car data (speed, heading, latitude and longitude) to CAN-Interface and flush
+				String positionString = "$SimCarState#" + speed + "#" + heading + "#" + latitude + "#" + longitude + "%";
+				printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+			 	printWriter.print(positionString);
+			 	printWriter.flush();
+			 				 	
 			} catch (IOException e) {
 				System.err.println("CANClient_sendCarData(): " + e.toString());
 			}
