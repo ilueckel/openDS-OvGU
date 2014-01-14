@@ -22,6 +22,9 @@ package eu.opends.main;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
+
+import javax.sound.sampled.AudioFileFormat;
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -29,6 +32,7 @@ import com.jme3.input.Joystick;
 import com.jme3.math.Vector3f;
 import com.jme3.niftygui.NiftyJmeDisplay;
 import com.jme3.system.AppSettings;
+
 import de.lessvoid.nifty.Nifty;
 import eu.opends.analyzer.DrivingTaskLogger;
 import eu.opends.analyzer.DataWriter;
@@ -497,6 +501,11 @@ public class Simulator extends SimulationBasics
 
 			if(settingsControllerServer != null)
 				settingsControllerServer.close();
+			
+			dataWriter.micRecorder.finish();
+			//dataWriter.micRecorder.saveToFile("~tmp", AudioFileFormat.Type.WAVE , dataWriter.micRecorder.getAudioInputStream());
+			
+			dataWriter.webcamGrabber.stop();
 			
 			//initDrivingTaskSelectionGUI();
 		}

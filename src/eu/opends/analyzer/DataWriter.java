@@ -28,8 +28,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import javax.sound.sampled.AudioFileFormat;
+import javax.sound.sampled.AudioFormat;
+
 import eu.opends.car.Car;
 import eu.opends.tools.Util;
+import eu.opends.webcam.Grabber;
+import eu.opends.webcam.SoundRecorder;
 
 /**
  * 
@@ -58,6 +63,8 @@ public class DataWriter
 	private String driverName = "";
 	private Date curDate;
 	private String drivingTaskFileName;
+	public eu.opends.webcam.Grabber webcamGrabber;
+	public eu.opends.webcam.SoundRecorder micRecorder;
 
 
 	public DataWriter(String outputFolder, Car car, String driverName, String drivingTaskFileName) 
@@ -70,7 +77,12 @@ public class DataWriter
 		Util.makeDirectory(outputFolder);
 
 		analyzerDataFile = new File(outputFolder + "/carData.txt");
-
+		webcamGrabber = new Grabber(outputFolder);
+		webcamGrabber.initializeCam();
+		
+		micRecorder = new SoundRecorder(outputFolder);
+		micRecorder.start();
+		
 		initWriter();
 	}
 
@@ -125,6 +137,7 @@ public class DataWriter
 
 		if (curDate.getTime() - lastAnalyzerDataSave.getTime() >= 50) 
 		{
+			
 			write(
 					curDate,
 					Math.round(car.getPosition().x * 1000) / 1000.,
@@ -138,6 +151,18 @@ public class DataWriter
 							.getSteeringWheelState() * 100000) / 100000., car
 							.getGasPedalPressIntensity(), car.getBrakePedalPressIntensity());
 
+			Runnable r = new Runnable()
+			{
+			    @Override
+			    public void run()
+			    {
+			    	webcamGrabber.captureImage(Long.toString(curDate.getTime()));
+			    }
+			};
+
+			Thread t = new Thread(r);
+			t.start();
+			
 			lastAnalyzerDataSave = curDate;
 		}
 
