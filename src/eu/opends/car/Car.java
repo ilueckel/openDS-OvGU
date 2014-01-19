@@ -38,6 +38,7 @@ import eu.opends.tools.SpeedControlCenter;
 /**
  * 
  * @author Rafael Math
+ *		   Anpassungen Martin Michael Kalbitz
  */
 public abstract class Car
 {
@@ -563,6 +564,22 @@ public abstract class Car
 	}
 
 
+	/**
+	 * 
+	 * @param intensity 2 for HighBeam, <br> 1 for LowBeam and <br> 0 for light off
+	 */
+	public void setLightState(int intensity)
+	{
+		switch (intensity) {
+		
+			case 0 :	lightIntensity = 1;
+						break;
+			case 1 :	lightIntensity = 2;
+						break;
+			default:	lightIntensity = 0;
+		}
+	}
+	
 	public String getLightState() 
 	{
 		if(lightIntensity == 2)
@@ -571,6 +588,11 @@ public abstract class Car
 			return "LowBeam";
 		else
 			return "Off";
+	}
+	
+	public int getLightIntensity()
+	{
+		return (int) lightIntensity;
 	}
 	
 	
