@@ -40,6 +40,7 @@ import com.jme3.scene.Spatial.CullHint;
 import com.jme3.scene.shape.Curve;
 import com.jme3.scene.shape.Cylinder;
 import com.jme3.system.AppSettings;
+
 import de.lessvoid.nifty.Nifty;
 import eu.opends.analyzer.DeviationComputer;
 import eu.opends.analyzer.DataReader;
@@ -49,6 +50,7 @@ import eu.opends.camera.AnalyzerCam;
 import eu.opends.drivingTask.DrivingTask;
 import eu.opends.input.KeyBindingCenter;
 import eu.opends.niftyGui.AnalyzerFileSelectionGUIController;
+import eu.opends.webcam.CapturedImageViewer;
 
 /**
  * 
@@ -71,6 +73,8 @@ public class DriveAnalyzer extends SimulationBasics
 	private Node coneNode = new Node();
 	private Node target = new Node();
 	private int targetIndex = 0;
+	
+	private CapturedImageViewer capturedImageViewer;
 
 	private BitmapText markerText, speedText, timeText;
 	
@@ -199,6 +203,9 @@ public class DriveAnalyzer extends SimulationBasics
 	private void loadData() 
 	{
 		dataReader.initReader(analyzerFilePath, true);
+		
+		// initialize capturedImageViewer
+		this.capturedImageViewer = new CapturedImageViewer(analyzerFilePath.substring(0, analyzerFilePath.lastIndexOf("\\")));
 
 		//mapFileName = myDataReader.getNameOfMap();
 
@@ -478,6 +485,9 @@ public class DriveAnalyzer extends SimulationBasics
 		Spatial nextCone = coneNode.getChild("cone_" + (targetIndex+1));
 		if(nextCone != null)
 			nextCone.setCullHint(CullHint.Always);
+		
+		// Update webcams
+		this.capturedImageViewer.showImage(this.timeList.get(targetIndex));
 	}
 
 
@@ -508,7 +518,6 @@ public class DriveAnalyzer extends SimulationBasics
 			super.simpleUpdate(tpf);
     	}
     }
-    
     
 	/**
 	 * Cleanup after game loop was left

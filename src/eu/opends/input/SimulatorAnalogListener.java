@@ -106,7 +106,6 @@ public class SimulatorAnalogListener implements AnalogListener
 			if(Math.abs(brakeValue) >= 0.5f)
 				simulator.getSteeringTask().getPrimaryTask().reportRedLight();
 			
-
 			if(Math.abs(brakeValue) <= 0.05f)
 				simulator.getCar().resetPedals();
 			else
