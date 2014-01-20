@@ -44,6 +44,7 @@ import eu.opends.main.Simulator;
  * sent to the CAN-Interface.
  * 
  * @author Rafael Math
+*		   Anpassungen Martin Michael Kalbitz
  */
 public class CANClient extends Thread
 {
@@ -140,9 +141,11 @@ public class CANClient extends Thread
 				if (zeile != null)
 				{
 					blkLeft = Integer.parseInt(zeile);
-					if (blkLeft != 0)	car.setTurnSignal(TurnSignalState.LEFT);
-					else				car.setTurnSignal(TurnSignalState.OFF);
-					
+					if (blkLeft != -1)
+					{
+						if (blkLeft != 0)	car.setTurnSignal(TurnSignalState.LEFT);
+						else				car.setTurnSignal(TurnSignalState.OFF);
+					}					
 				}
 				//Blinker rechts
 				zeile = reader.readLine();

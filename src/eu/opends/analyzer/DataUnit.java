@@ -26,6 +26,7 @@ import java.util.Date;
  * date. Based on <code>AnalyzationData.java</code> from the CARS-project.
  * 
  * @author Marco Mueller
+ * 			Anpassungen Martin Michael Kalbitz
  */
 public class DataUnit implements Serializable 
 {
@@ -33,6 +34,8 @@ public class DataUnit implements Serializable
 	private double xpos, ypos, zpos, speed, steeringWheelPos, gasPedalPos, brakePedalPos,
 			xrot, yrot, zrot, wrot;
 	private Date date;
+	private int lightIntensity;
+	private boolean enginOn, blinkerLeft, blinkerRight;
 	
 
 	/**
@@ -59,7 +62,8 @@ public class DataUnit implements Serializable
 
 	public DataUnit(Date date, double xpos, double ypos, double zpos,
 			double xrot, double yrot, double zrot, double wrot, double speed,
-			double steeringWheelPos, double gasPedalPos, double brakePedalPos) 
+			double steeringWheelPos, double gasPedalPos, double brakePedalPos,
+			boolean enginOn, int lightIntensity, boolean blinkerLeft, boolean blinkerRight) 
 	{
 		setDate(date);
 		setSpeed(speed);
@@ -73,6 +77,10 @@ public class DataUnit implements Serializable
 		setSteeringWheelPos(steeringWheelPos);
 		setGasPedalPos(gasPedalPos);
 		setBrakePedalPos(brakePedalPos);
+		setEnginOn(enginOn);
+		setLightIntensity(lightIntensity);
+		setBlinkerLeft(blinkerLeft);
+		setBlinkerRight(blinkerRight);
 	}
 
 
@@ -244,6 +252,46 @@ public class DataUnit implements Serializable
 	 */
 	private void setBrakePedalPos(double brakePedalPos) {
 		this.brakePedalPos = brakePedalPos;
+	}
+
+
+	public boolean isEnginOn() {
+		return enginOn;
+	}
+
+
+	public void setEnginOn(boolean enginOn) {
+		this.enginOn = enginOn;
+	}
+
+
+	public int getLightIntensity() {
+		return lightIntensity;
+	}
+
+
+	public void setLightIntensity(int lightIntensity) {
+		this.lightIntensity = lightIntensity;
+	}
+
+
+	public boolean isBlinkerLeft() {
+		return blinkerLeft;
+	}
+
+
+	public void setBlinkerLeft(boolean blinkerLeft) {
+		this.blinkerLeft = blinkerLeft;
+	}
+
+
+	public boolean isBlinkerRight() {
+		return blinkerRight;
+	}
+
+
+	public void setBlinkerRight(boolean blinkerRight) {
+		this.blinkerRight = blinkerRight;
 	}
 
 
