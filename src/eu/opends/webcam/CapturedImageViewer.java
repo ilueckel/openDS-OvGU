@@ -37,12 +37,18 @@ public class CapturedImageViewer {
 		// update canvas-frames
 		int i = 0;
 		for(CanvasFrame canvas : canvasframes){
+			boolean imageexists = new File(this.outputFolder + "/" + i + "/" + timestamp
+					+ "-capture.jpg").exists();
 			System.out.println("File "+this.outputFolder + "/" + i + "/" + timestamp
-					+ "-capture.jpg" + " exists: " +new File(this.outputFolder + "/" + i + "/" + timestamp
-					+ "-capture.jpg").exists());
-			IplImage image = cvLoadImage(this.outputFolder + "/" + i + "/" + timestamp
-					+ "-capture.jpg");
-			canvas.showImage(image);
+					+ "-capture.jpg" + " exists: " +imageexists);
+			if (imageexists)
+			{
+				IplImage image;
+				image = cvLoadImage(this.outputFolder + "/" + i + "/" + timestamp + "-capture.jpg");
+				canvas.showImage(image);
+				com.googlecode.javacv.cpp.opencv_core.cvReleaseImage(image);
+			}
+			
 			i++;
 		}
 	}
