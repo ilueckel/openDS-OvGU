@@ -19,7 +19,6 @@
 package eu.opends.canbus;
 
 import java.net.Socket;
-import java.net.SocketException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.io.*;
@@ -32,7 +31,6 @@ import eu.opends.car.Car;
 import eu.opends.car.LightTexturesContainer.TurnSignalState;
 import eu.opends.drivingTask.settings.SettingsLoader;
 import eu.opends.drivingTask.settings.SettingsLoader.Setting;
-import eu.opends.environment.XMLParser;
 import eu.opends.main.SimulationDefaults;
 import eu.opends.main.Simulator;
 

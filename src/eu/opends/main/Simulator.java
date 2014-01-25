@@ -23,8 +23,6 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.sound.sampled.AudioFileFormat;
-
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 

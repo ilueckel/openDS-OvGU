@@ -1,7 +1,5 @@
 package eu.opends.eventLogger;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -17,8 +15,6 @@ import javax.swing.*;
 import eu.opends.analyzer.DataUnit;
 import eu.opends.car.Car;
 import eu.opends.tools.Util;
-import eu.opends.webcam.Grabber;
-import eu.opends.webcam.SoundRecorder;
 
 public class eventLogger {
 
