@@ -129,7 +129,7 @@ public class KeyBindingCenter
         inputManager.addMapping("DPAD Down", new JoyAxisTrigger(0, JoyInput.AXIS_POV_Y, true));
         inputManager.addMapping("DPAD Up", new JoyAxisTrigger(0, JoyInput.AXIS_POV_Y, false));
         
-        /*
+        
         if(inputManager.getJoysticks().length > 0 && inputManager.getJoysticks()[0].getName().equals("Logitech Driving Force GT USB"))
         {
         	inputManager.addMapping("Joy Up", new JoyAxisTrigger(0, 2, false));
@@ -144,7 +144,7 @@ public class KeyBindingCenter
         	inputManager.addMapping("Joy Down", new JoyAxisTrigger(0, 1, true));
         	inputManager.addMapping("Joy Up", new JoyAxisTrigger(0, 1, false));
         }
-        */
+        
         
         SettingsLoader settingsLoader = Simulator.getSettingsLoader();
         int controllerID = settingsLoader.getSetting(Setting.Joystick_controllerID, 0);
