@@ -1,20 +1,20 @@
 /*
-*  This file is part of OpenDS (Open Source Driving Simulator).
-*  Copyright (C) 2013 Rafael Math
-*
-*  OpenDS is free software: you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation, either version 3 of the License, or
-*  (at your option) any later version.
-*
-*  OpenDS is distributed in the hope that it will be useful,
-*  but WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-*  GNU General Public License for more details.
-*
-*  You should have received a copy of the GNU General Public License
-*  along with OpenDS. If not, see <http://www.gnu.org/licenses/>.
-*/
+ *  This file is part of OpenDS (Open Source Driving Simulator).
+ *  Copyright (C) 2013 Rafael Math
+ *
+ *  OpenDS is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  OpenDS is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with OpenDS. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 package eu.opends.analyzer;
 
@@ -27,13 +27,12 @@ import java.util.Date;
  * 
  * @author Marco Mueller
  */
-public class DataUnit implements Serializable 
-{
+public class DataUnit implements Serializable {
 	private static final long serialVersionUID = -8293989514037755782L;
-	private double xpos, ypos, zpos, speed, steeringWheelPos, gasPedalPos, brakePedalPos,
-			xrot, yrot, zrot, wrot;
+	private double xpos, ypos, zpos, speed, steeringWheelPos, gasPedalPos,
+			brakePedalPos, xrot, yrot, zrot, wrot;
 	private Date date;
-	
+	private String description;
 
 	/**
 	 * The default constructor.
@@ -52,15 +51,16 @@ public class DataUnit implements Serializable
 	 *            The position of the steering wheel: -1 full left, 0 centered,
 	 *            1 full right.
 	 * @param gasPedalPos
-	 *            The position of the gas pedal: 0 no acceleration, 1 full acceleration
+	 *            The position of the gas pedal: 0 no acceleration, 1 full
+	 *            acceleration
 	 * @param brakePedalPos
-	 *            The position of the brake pedal: -1 full break/negative acceleration, 0 no acceleration
+	 *            The position of the brake pedal: -1 full break/negative
+	 *            acceleration, 0 no acceleration
 	 */
 
 	public DataUnit(Date date, double xpos, double ypos, double zpos,
 			double xrot, double yrot, double zrot, double wrot, double speed,
-			double steeringWheelPos, double gasPedalPos, double brakePedalPos) 
-	{
+			double steeringWheelPos, double gasPedalPos, double brakePedalPos) {
 		setDate(date);
 		setSpeed(speed);
 		setXpos(xpos);
@@ -75,9 +75,17 @@ public class DataUnit implements Serializable
 		setBrakePedalPos(brakePedalPos);
 	}
 
+	public DataUnit(Date date, String description) {
+		setDate(date);
+		this.description = description;
+	}
 
 	public double getXrot() {
 		return xrot;
+	}
+
+	public String getDescription() {
+		return description;
 	}
 
 	private void setXrot(double xrot) {
@@ -228,7 +236,6 @@ public class DataUnit implements Serializable
 		this.gasPedalPos = pedalPos;
 	}
 
-
 	/**
 	 * 
 	 * @return true if the car is breaking, else false
@@ -245,6 +252,5 @@ public class DataUnit implements Serializable
 	private void setBrakePedalPos(double brakePedalPos) {
 		this.brakePedalPos = brakePedalPos;
 	}
-
 
 }

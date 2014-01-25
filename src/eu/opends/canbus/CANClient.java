@@ -24,7 +24,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.io.*;
 
-import sun.net.www.protocol.http.HttpURLConnection.TunnelState;
+//import sun.net.www.protocol.http.HttpURLConnection.TunnelState;
 
 import com.jme3.math.Vector3f;
 
@@ -129,7 +129,7 @@ public class CANClient extends Thread
 				if (zeile != null)
 				{
 					int lightIntensity = Integer.parseInt(zeile);
-					car.setLightState(lightIntensity);
+					//car.setLightState(lightIntensity);
 					car.toggleLight();
 					System.out.println(lightIntensity);
 					

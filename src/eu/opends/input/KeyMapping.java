@@ -81,6 +81,7 @@ public class KeyMapping
 	public static KeyMapping TURN_LEFT = new KeyMapping("turn_left", "flash left turn signal", new String[] {"J"});
 	public static KeyMapping TURN_RIGHT = new KeyMapping("turn_right", "flash right turn signal", new String[] {"K"});
 	public static KeyMapping HAZARD_LIGHTS = new KeyMapping("hazard_lights", "flash hazard lights", new String[] {"F"});
+	public static KeyMapping LOG_EVENT = new KeyMapping("log_event", "log event", new String[] {"Q"});
 	
 	// analyzer keys
 	public static KeyMapping GOTO_NEXT_DATAPOINT = new KeyMapping("goto_next_datapoint", "next data point", new String[] {"UP"});
@@ -146,6 +147,7 @@ public class KeyMapping
 		keyMappingList.add(KeyMapping.TURN_LEFT);
 		keyMappingList.add(KeyMapping.TURN_RIGHT);
 		keyMappingList.add(KeyMapping.HAZARD_LIGHTS);
+		keyMappingList.add(KeyMapping.LOG_EVENT);
 		
 		SimulationBasics.getDrivingTask().getSettingsLoader().lookUpKeyMappings(keyMappingList);
 		
