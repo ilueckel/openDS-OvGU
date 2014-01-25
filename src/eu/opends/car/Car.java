@@ -573,6 +573,11 @@ public abstract class Car
 			return "Off";
 	}
 	
+	public int getLightIntensity()
+	{
+		return (int) lightIntensity;
+	}
+	
 	
 	public void setBrakeLight(boolean setToOn)
 	{

@@ -32,6 +32,7 @@ import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioFormat;
 
 import eu.opends.car.Car;
+import eu.opends.car.LightTexturesContainer.TurnSignalState;
 import eu.opends.tools.Util;
 import eu.opends.webcam.Grabber;
 import eu.opends.webcam.SoundRecorder;
@@ -116,7 +117,8 @@ public class DataWriter
 			out.write("Driver: " + driverName + newLine);
 			out.write("Used Format = Time (ms): Position (x,y,z) : Rotation (x,y,z,w) :"
 					+ " Speed (km/h) : Steering Wheel Position [-1,1] : Gas Pedal Position :"
-					+ " Brake Pedal Position" + newLine);
+					+ " Brake Pedal Position : Engine (On) : light Intensity : TurnSignalLeft :"
+					+ " TurnSignalRight" + newLine);
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -148,8 +150,13 @@ public class DataWriter
 					Math.round(car.getRotation().getZ() * 10000) / 10000.,
 					Math.round(car.getRotation().getW() * 10000) / 10000.,
 					car.getCurrentSpeedKmhRounded(), Math.round(car
-							.getSteeringWheelState() * 100000) / 100000., car
-							.getGasPedalPressIntensity(), car.getBrakePedalPressIntensity());
+							.getSteeringWheelState() * 100000) / 100000., 
+							 car.getGasPedalPressIntensity(), car.getBrakePedalPressIntensity(),
+							 car.isEngineOn(),
+							 car.getLightIntensity(),
+							 car.getTurnSignal() == TurnSignalState.BOTH || car.getTurnSignal() == TurnSignalState.LEFT ? true : false,
+							 car.getTurnSignal() == TurnSignalState.BOTH || car.getTurnSignal() == TurnSignalState.RIGHT ? true : false  
+							);
 
 			Runnable r = new Runnable()
 			{
@@ -176,10 +183,12 @@ public class DataWriter
 	 */
 	public void write(Date curDate, double x, double y, double z, double xRot,
 			double yRot, double zRot, double wRot, double linearSpeed,
-			double steeringWheelState, double gasPedalState, double brakePedalState) 
+			double steeringWheelState, double gasPedalState, double brakePedalState,
+			boolean enginOn, int lightIntensity, boolean blinkerLeft, boolean blinkerRight) 
 	{
 		DataUnit row = new DataUnit(curDate, x, y, z, xRot, yRot, zRot, wRot,
-				linearSpeed, steeringWheelState, gasPedalState, brakePedalState);
+				linearSpeed, steeringWheelState, gasPedalState, brakePedalState,
+				enginOn, lightIntensity, blinkerLeft, blinkerRight);
 		this.write(row);
 
 	}

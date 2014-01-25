@@ -33,6 +33,8 @@ public class DataUnit implements Serializable {
 			brakePedalPos, xrot, yrot, zrot, wrot;
 	private Date date;
 	private String description;
+	private int lightIntensity;
+	private boolean enginOn, blinkerLeft, blinkerRight;
 
 	/**
 	 * The default constructor.
@@ -60,7 +62,8 @@ public class DataUnit implements Serializable {
 
 	public DataUnit(Date date, double xpos, double ypos, double zpos,
 			double xrot, double yrot, double zrot, double wrot, double speed,
-			double steeringWheelPos, double gasPedalPos, double brakePedalPos) {
+			double steeringWheelPos, double gasPedalPos, double brakePedalPos,
+			boolean enginOn, int lightIntensity, boolean blinkerLeft, boolean blinkerRight) {
 		setDate(date);
 		setSpeed(speed);
 		setXpos(xpos);
@@ -73,6 +76,10 @@ public class DataUnit implements Serializable {
 		setSteeringWheelPos(steeringWheelPos);
 		setGasPedalPos(gasPedalPos);
 		setBrakePedalPos(brakePedalPos);
+		setEnginOn(enginOn);
+		setLightIntensity(lightIntensity);
+		setBlinkerLeft(blinkerLeft);
+		setBlinkerRight(blinkerRight);
 	}
 
 	public DataUnit(Date date, String description) {
@@ -251,6 +258,45 @@ public class DataUnit implements Serializable {
 	 */
 	private void setBrakePedalPos(double brakePedalPos) {
 		this.brakePedalPos = brakePedalPos;
+	}
+	
+	public boolean isEnginOn() {
+		return enginOn;
+	}
+
+
+	public void setEnginOn(boolean enginOn) {
+		this.enginOn = enginOn;
+	}
+
+
+	public int getLightIntensity() {
+		return lightIntensity;
+	}
+
+
+	public void setLightIntensity(int lightIntensity) {
+		this.lightIntensity = lightIntensity;
+	}
+
+
+	public boolean isBlinkerLeft() {
+		return blinkerLeft;
+	}
+
+
+	public void setBlinkerLeft(boolean blinkerLeft) {
+		this.blinkerLeft = blinkerLeft;
+	}
+
+
+	public boolean isBlinkerRight() {
+		return blinkerRight;
+	}
+
+
+	public void setBlinkerRight(boolean blinkerRight) {
+		this.blinkerRight = blinkerRight;
 	}
 
 }
