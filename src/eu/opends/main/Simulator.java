@@ -62,6 +62,7 @@ import eu.opends.tools.Util;
 import eu.opends.traffic.PhysicalTraffic;
 import eu.opends.trigger.TriggerCenter;
 import eu.opends.visualization.LightningClient;
+import eu.opends.eventLogger.*;
 
 /**
  * 
@@ -107,7 +108,11 @@ public class Simulator extends SimulationBasics
 	{
 		return dataWriter;
 	}
-	
+	private eventLogger EventLogger;
+	public eventLogger getMyEventLogger() {
+		return EventLogger;
+	} 
+
 	private LightningClient lightningClient;
 	public LightningClient getLightningClient() 
 	{
@@ -369,6 +374,7 @@ public class Simulator extends SimulationBasics
 	public void initializeDataWriter() 
 	{
 		dataWriter = new DataWriter(outputFolder, car, driverName, SimulationDefaults.drivingTaskFileName);
+		EventLogger = new eventLogger(outputFolder, car, driverName, SimulationDefaults.drivingTaskFileName);
 	}
 	
 	
@@ -435,8 +441,9 @@ public class Simulator extends SimulationBasics
 	{
 		if (dataWriter != null && dataWriter.isDataWriterEnabled()) 
 		{
-			if(!isPause())
+			if(!isPause()) {
 				dataWriter.saveAnalyzerData();
+			}
 
 			if (!dataWriterQuittable)
 				dataWriterQuittable = true;
@@ -446,6 +453,8 @@ public class Simulator extends SimulationBasics
 			if (dataWriterQuittable) 
 			{
 				dataWriter.quit();
+				EventLogger.quit();
+				EventLogger = null;
 				dataWriter = null;
 				dataWriterQuittable = false;
 			}
@@ -503,7 +512,6 @@ public class Simulator extends SimulationBasics
 				settingsControllerServer.close();
 			
 			dataWriter.micRecorder.finish();
-			//dataWriter.micRecorder.saveToFile("~tmp", AudioFileFormat.Type.WAVE , dataWriter.micRecorder.getAudioInputStream());
 			
 			dataWriter.webcamGrabber.stop();
 			
