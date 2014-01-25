@@ -28,9 +28,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import javax.sound.sampled.AudioFileFormat;
-import javax.sound.sampled.AudioFormat;
-
 import eu.opends.car.Car;
 import eu.opends.car.LightTexturesContainer.TurnSignalState;
 import eu.opends.tools.Util;
@@ -216,7 +213,9 @@ public class DataWriter
 						+ ":" + r.getYrot() + ":" + r.getZrot() + ":"
 						+ r.getWrot() + ":" + r.getSpeed() + ":"
 						+ r.getSteeringWheelPos() + ":" + r.getPedalPos() + ":"
-						+ r.isBreaking() + newLine
+						+ r.isBreaking() + ":" + r.isEnginOn() +":"
+						+ r.getLightIntensity() + ":" + r.isBlinkerLeft() +":"
+						+ r.isBlinkerRight() + newLine
 				// + r.getRacingLineDistance()
 						// + ":"
 						// + r.getFuelConsumption()
