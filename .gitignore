@@ -2,5 +2,14 @@
 /doc
 /lib
 /bin
-/assets
+/assets/Effects
+/assets/Interface
+/assets/JasperReports
+/assets/MatDefs
+/assets/Materials
+/assets/Models
+/assets/Scenes
+/assets/Shaders
+/assets/Sounds
+/assets/Textures
 /analyzerData

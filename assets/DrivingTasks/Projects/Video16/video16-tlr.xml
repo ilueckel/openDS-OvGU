@@ -1,0 +1,528 @@
+<TrafficLightControl>
+	<TrafficLightRules>
+		<Intersection ID="00">
+			<TrafficLight ID="00">
+				<RequiresRed>04</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+				<RequiresRed>12</RequiresRed>
+				<RequiresRed>14</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="02">
+				<RequiresRed>04</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+				<RequiresRed>08</RequiresRed>
+				<RequiresRed>12</RequiresRed>
+				<RequiresRed>14</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="04">
+				<RequiresRed>08</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+				<RequiresRed>14</RequiresRed>
+				<RequiresRed>00</RequiresRed>
+				<RequiresRed>02</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="06">
+				<RequiresRed>08</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+				<RequiresRed>12</RequiresRed>
+				<RequiresRed>00</RequiresRed>
+				<RequiresRed>02</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="08">
+				<RequiresRed>04</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+				<RequiresRed>02</RequiresRed>
+				<RequiresRed>12</RequiresRed>
+				<RequiresRed>14</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="10">
+				<RequiresRed>04</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+				<RequiresRed>00</RequiresRed>
+				<RequiresRed>12</RequiresRed>
+				<RequiresRed>14</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="12">
+				<RequiresRed>00</RequiresRed>
+				<RequiresRed>02</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+				<RequiresRed>08</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="14">
+				<RequiresRed>00</RequiresRed>
+				<RequiresRed>02</RequiresRed>
+				<RequiresRed>04</RequiresRed>
+				<RequiresRed>08</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+		</Intersection>
+		<Intersection ID="01">
+			<TrafficLight ID="00">
+				<RequiresRed>04</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+				<RequiresRed>12</RequiresRed>
+				<RequiresRed>14</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="02">
+				<RequiresRed>04</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+				<RequiresRed>08</RequiresRed>
+				<RequiresRed>12</RequiresRed>
+				<RequiresRed>14</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="04">
+				<RequiresRed>08</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+				<RequiresRed>14</RequiresRed>
+				<RequiresRed>00</RequiresRed>
+				<RequiresRed>02</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="06">
+				<RequiresRed>08</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+				<RequiresRed>12</RequiresRed>
+				<RequiresRed>00</RequiresRed>
+				<RequiresRed>02</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="08">
+				<RequiresRed>04</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+				<RequiresRed>02</RequiresRed>
+				<RequiresRed>12</RequiresRed>
+				<RequiresRed>14</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="10">
+				<RequiresRed>04</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+				<RequiresRed>00</RequiresRed>
+				<RequiresRed>12</RequiresRed>
+				<RequiresRed>14</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="12">
+				<RequiresRed>00</RequiresRed>
+				<RequiresRed>02</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+				<RequiresRed>08</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="14">
+				<RequiresRed>00</RequiresRed>
+				<RequiresRed>02</RequiresRed>
+				<RequiresRed>04</RequiresRed>
+				<RequiresRed>08</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+		</Intersection>
+		<Intersection ID="02">
+			<TrafficLight ID="00">
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="02">
+				<RequiresRed>04</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="04">
+				<RequiresRed>02</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="06">
+				<RequiresRed>02</RequiresRed>
+				<RequiresRed>08</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="08">
+				<RequiresRed>06</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="10">
+				<RequiresRed>00</RequiresRed>
+				<RequiresRed>02</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+			</TrafficLight>
+		</Intersection>
+		<Intersection ID="03">
+			<TrafficLight ID="00">
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="02">
+				<RequiresRed>04</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="04">
+				<RequiresRed>02</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="06">
+				<RequiresRed>02</RequiresRed>
+				<RequiresRed>08</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="08">
+				<RequiresRed>06</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="10">
+				<RequiresRed>00</RequiresRed>
+				<RequiresRed>02</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+			</TrafficLight>
+		</Intersection>
+		<Intersection ID="04">
+			<TrafficLight ID="00">
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="02">
+				<RequiresRed>04</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="04">
+				<RequiresRed>02</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="06">
+				<RequiresRed>02</RequiresRed>
+				<RequiresRed>08</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="08">
+				<RequiresRed>06</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="10">
+				<RequiresRed>00</RequiresRed>
+				<RequiresRed>02</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+			</TrafficLight>
+		</Intersection>
+		<Intersection ID="05">
+			<TrafficLight ID="00">
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="02">
+				<RequiresRed>04</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="04">
+				<RequiresRed>02</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="06">
+				<RequiresRed>02</RequiresRed>
+				<RequiresRed>08</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="08">
+				<RequiresRed>06</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="10">
+				<RequiresRed>00</RequiresRed>
+				<RequiresRed>02</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+			</TrafficLight>
+		</Intersection>
+		<Intersection ID="06">
+			<TrafficLight ID="00">
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="02">
+				<RequiresRed>04</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="04">
+				<RequiresRed>02</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="06">
+				<RequiresRed>02</RequiresRed>
+				<RequiresRed>08</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="08">
+				<RequiresRed>06</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="10">
+				<RequiresRed>00</RequiresRed>
+				<RequiresRed>02</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+			</TrafficLight>
+		</Intersection>
+		<Intersection ID="07">
+			<TrafficLight ID="00">
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="02">
+				<RequiresRed>04</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="04">
+				<RequiresRed>02</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="06">
+				<RequiresRed>02</RequiresRed>
+				<RequiresRed>08</RequiresRed>
+				<RequiresRed>10</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="08">
+				<RequiresRed>06</RequiresRed>
+			</TrafficLight>
+			<TrafficLight ID="10">
+				<RequiresRed>00</RequiresRed>
+				<RequiresRed>02</RequiresRed>
+				<RequiresRed>06</RequiresRed>
+			</TrafficLight>
+		</Intersection>
+	</TrafficLightRules>
+	<TrafficLightPhases>
+		<Intersection ID="00">
+			<Phase ID="01" duration="9" state="ggggrrrrggggrrrr"/>
+			<Phase ID="02" duration="1" state="yyggrrrryyggrrrr"/>
+			<Phase ID="03" duration="3" state="rrggrrrrrrggrrrr"/>
+			<Phase ID="04" duration="1" state="rryyrrrrrryyrrrr"/>
+			<Phase ID="05" duration="1" state="rrrrxxrrrrrrxxrr"/>
+			<Phase ID="06" duration="3" state="rrrrggrrrrrrggrr"/>
+			<Phase ID="07" duration="1" state="rrrrggxxrrrrggxx"/>
+			<Phase ID="08" duration="9" state="rrrrggggrrrrgggg"/>
+			<Phase ID="09" duration="1" state="rrrryyggrrrryygg"/>
+			<Phase ID="10" duration="3" state="rrrrrrggrrrrrrgg"/>
+			<Phase ID="11" duration="1" state="rrrrrryyrrrrrryy"/>
+			<Phase ID="12" duration="1" state="xxrrrrrrxxrrrrrr"/>
+			<Phase ID="13" duration="3" state="ggrrrrrrggrrrrrr"/>
+			<Phase ID="14" duration="1" state="ggxxrrrrggxxrrrr"/>
+		</Intersection>
+				<Intersection ID="01">
+			<Phase ID="01" duration="9" state="ggggrrrrggggrrrr"/>
+			<Phase ID="02" duration="1" state="yyggrrrryyggrrrr"/>
+			<Phase ID="03" duration="3" state="rrggrrrrrrggrrrr"/>
+			<Phase ID="04" duration="1" state="rryyrrrrrryyrrrr"/>
+			<Phase ID="05" duration="1" state="rrrrxxrrrrrrxxrr"/>
+			<Phase ID="06" duration="3" state="rrrrggrrrrrrggrr"/>
+			<Phase ID="07" duration="1" state="rrrrggxxrrrrggxx"/>
+			<Phase ID="08" duration="9" state="rrrrggggrrrrgggg"/>
+			<Phase ID="09" duration="1" state="rrrryyggrrrryygg"/>
+			<Phase ID="10" duration="3" state="rrrrrrggrrrrrrgg"/>
+			<Phase ID="11" duration="1" state="rrrrrryyrrrrrryy"/>
+			<Phase ID="12" duration="1" state="xxrrrrrrxxrrrrrr"/>
+			<Phase ID="13" duration="3" state="ggrrrrrrggrrrrrr"/>
+			<Phase ID="14" duration="1" state="ggxxrrrrggxxrrrr"/>
+		</Intersection>
+				<Intersection ID="02">
+			<Phase ID="01" duration="9" state="ggggrrrrggggrrrr"/>
+			<Phase ID="02" duration="1" state="yyggrrrryyggrrrr"/>
+			<Phase ID="03" duration="3" state="rrggrrrrrrggrrrr"/>
+			<Phase ID="04" duration="1" state="rryyrrrrrryyrrrr"/>
+			<Phase ID="05" duration="1" state="rrrrxxrrrrrrxxrr"/>
+			<Phase ID="06" duration="3" state="rrrrggrrrrrrggrr"/>
+			<Phase ID="07" duration="1" state="rrrrggxxrrrrggxx"/>
+			<Phase ID="08" duration="9" state="rrrrggggrrrrgggg"/>
+			<Phase ID="09" duration="1" state="rrrryyggrrrryygg"/>
+			<Phase ID="10" duration="3" state="rrrrrrggrrrrrrgg"/>
+			<Phase ID="11" duration="1" state="rrrrrryyrrrrrryy"/>
+			<Phase ID="12" duration="1" state="xxrrrrrrxxrrrrrr"/>
+			<Phase ID="13" duration="3" state="ggrrrrrrggrrrrrr"/>
+			<Phase ID="14" duration="1" state="ggxxrrrrggxxrrrr"/>
+		</Intersection>
+				<Intersection ID="03">
+			<Phase ID="01" duration="9" state="ggggrrrrggggrrrr"/>
+			<Phase ID="02" duration="1" state="yyggrrrryyggrrrr"/>
+			<Phase ID="03" duration="3" state="rrggrrrrrrggrrrr"/>
+			<Phase ID="04" duration="1" state="rryyrrrrrryyrrrr"/>
+			<Phase ID="05" duration="1" state="rrrrxxrrrrrrxxrr"/>
+			<Phase ID="06" duration="3" state="rrrrggrrrrrrggrr"/>
+			<Phase ID="07" duration="1" state="rrrrggxxrrrrggxx"/>
+			<Phase ID="08" duration="9" state="rrrrggggrrrrgggg"/>
+			<Phase ID="09" duration="1" state="rrrryyggrrrryygg"/>
+			<Phase ID="10" duration="3" state="rrrrrrggrrrrrrgg"/>
+			<Phase ID="11" duration="1" state="rrrrrryyrrrrrryy"/>
+			<Phase ID="12" duration="1" state="xxrrrrrrxxrrrrrr"/>
+			<Phase ID="13" duration="3" state="ggrrrrrrggrrrrrr"/>
+			<Phase ID="14" duration="1" state="ggxxrrrrggxxrrrr"/>
+		</Intersection>
+				<Intersection ID="04">
+			<Phase ID="01" duration="9" state="ggggrrrrggggrrrr"/>
+			<Phase ID="02" duration="1" state="yyggrrrryyggrrrr"/>
+			<Phase ID="03" duration="3" state="rrggrrrrrrggrrrr"/>
+			<Phase ID="04" duration="1" state="rryyrrrrrryyrrrr"/>
+			<Phase ID="05" duration="1" state="rrrrxxrrrrrrxxrr"/>
+			<Phase ID="06" duration="3" state="rrrrggrrrrrrggrr"/>
+			<Phase ID="07" duration="1" state="rrrrggxxrrrrggxx"/>
+			<Phase ID="08" duration="9" state="rrrrggggrrrrgggg"/>
+			<Phase ID="09" duration="1" state="rrrryyggrrrryygg"/>
+			<Phase ID="10" duration="3" state="rrrrrrggrrrrrrgg"/>
+			<Phase ID="11" duration="1" state="rrrrrryyrrrrrryy"/>
+			<Phase ID="12" duration="1" state="xxrrrrrrxxrrrrrr"/>
+			<Phase ID="13" duration="3" state="ggrrrrrrggrrrrrr"/>
+			<Phase ID="14" duration="1" state="ggxxrrrrggxxrrrr"/>
+		</Intersection>
+				<Intersection ID="05">
+			<Phase ID="01" duration="9" state="ggggrrrrggggrrrr"/>
+			<Phase ID="02" duration="1" state="yyggrrrryyggrrrr"/>
+			<Phase ID="03" duration="3" state="rrggrrrrrrggrrrr"/>
+			<Phase ID="04" duration="1" state="rryyrrrrrryyrrrr"/>
+			<Phase ID="05" duration="1" state="rrrrxxrrrrrrxxrr"/>
+			<Phase ID="06" duration="3" state="rrrrggrrrrrrggrr"/>
+			<Phase ID="07" duration="1" state="rrrrggxxrrrrggxx"/>
+			<Phase ID="08" duration="9" state="rrrrggggrrrrgggg"/>
+			<Phase ID="09" duration="1" state="rrrryyggrrrryygg"/>
+			<Phase ID="10" duration="3" state="rrrrrrggrrrrrrgg"/>
+			<Phase ID="11" duration="1" state="rrrrrryyrrrrrryy"/>
+			<Phase ID="12" duration="1" state="xxrrrrrrxxrrrrrr"/>
+			<Phase ID="13" duration="3" state="ggrrrrrrggrrrrrr"/>
+			<Phase ID="14" duration="1" state="ggxxrrrrggxxrrrr"/>
+		</Intersection>
+				<Intersection ID="06">
+			<Phase ID="01" duration="9" state="ggggrrrrggggrrrr"/>
+			<Phase ID="02" duration="1" state="yyggrrrryyggrrrr"/>
+			<Phase ID="03" duration="3" state="rrggrrrrrrggrrrr"/>
+			<Phase ID="04" duration="1" state="rryyrrrrrryyrrrr"/>
+			<Phase ID="05" duration="1" state="rrrrxxrrrrrrxxrr"/>
+			<Phase ID="06" duration="3" state="rrrrggrrrrrrggrr"/>
+			<Phase ID="07" duration="1" state="rrrrggxxrrrrggxx"/>
+			<Phase ID="08" duration="9" state="rrrrggggrrrrgggg"/>
+			<Phase ID="09" duration="1" state="rrrryyggrrrryygg"/>
+			<Phase ID="10" duration="3" state="rrrrrrggrrrrrrgg"/>
+			<Phase ID="11" duration="1" state="rrrrrryyrrrrrryy"/>
+			<Phase ID="12" duration="1" state="xxrrrrrrxxrrrrrr"/>
+			<Phase ID="13" duration="3" state="ggrrrrrrggrrrrrr"/>
+			<Phase ID="14" duration="1" state="ggxxrrrrggxxrrrr"/>
+		</Intersection>
+				<Intersection ID="07">
+			<Phase ID="01" duration="9" state="ggggrrrrggggrrrr"/>
+			<Phase ID="02" duration="1" state="yyggrrrryyggrrrr"/>
+			<Phase ID="03" duration="3" state="rrggrrrrrrggrrrr"/>
+			<Phase ID="04" duration="1" state="rryyrrrrrryyrrrr"/>
+			<Phase ID="05" duration="1" state="rrrrxxrrrrrrxxrr"/>
+			<Phase ID="06" duration="3" state="rrrrggrrrrrrggrr"/>
+			<Phase ID="07" duration="1" state="rrrrggxxrrrrggxx"/>
+			<Phase ID="08" duration="9" state="rrrrggggrrrrgggg"/>
+			<Phase ID="09" duration="1" state="rrrryyggrrrryygg"/>
+			<Phase ID="10" duration="3" state="rrrrrrggrrrrrrgg"/>
+			<Phase ID="11" duration="1" state="rrrrrryyrrrrrryy"/>
+			<Phase ID="12" duration="1" state="xxrrrrrrxxrrrrrr"/>
+			<Phase ID="13" duration="3" state="ggrrrrrrggrrrrrr"/>
+			<Phase ID="14" duration="1" state="ggxxrrrrggxxrrrr"/>
+		</Intersection>
+	</TrafficLightPhases>
+	<TrafficLightPosition>
+		<Intersection ID="00">
+			<Road ID="00" type="4" arrow="9">
+				<TrafficLight1 ID="00"/>
+				<TrafficLight2 ID="02"/>
+			</Road>
+			<Road ID="01" type="4" arrow="9">
+				<TrafficLight1 ID="04"/>
+				<TrafficLight2 ID="06"/>
+			</Road>
+			<Road ID="02" type="4" arrow="9">
+				<TrafficLight1 ID="08"/>
+				<TrafficLight2 ID="10"/>
+			</Road>
+			<Road ID="03" type="4" arrow="9">
+				<TrafficLight1 ID="12"/>
+				<TrafficLight2 ID="14"/>
+			</Road>
+		</Intersection>
+		<Intersection ID="01">
+			<Road ID="00" type="4" arrow="9">
+				<TrafficLight1 ID="00"/>
+				<TrafficLight2 ID="02"/>
+			</Road>
+			<Road ID="01" type="4" arrow="9">
+				<TrafficLight1 ID="04"/>
+				<TrafficLight2 ID="06"/>
+			</Road>
+			<Road ID="02" type="4" arrow="9">
+				<TrafficLight1 ID="08"/>
+				<TrafficLight2 ID="10"/>
+			</Road>
+			<Road ID="03" type="4" arrow="9">
+				<TrafficLight1 ID="12"/>
+				<TrafficLight2 ID="14"/>
+			</Road>
+		</Intersection>
+		<Intersection ID="02">
+			<Road ID="00" type="0" arrow="4">
+				<TrafficLight0 ID="00"/>
+				<TrafficLight2 ID="02"/>
+			</Road>
+			<Road ID="01" type="2" arrow="3">
+				<TrafficLight1 ID="04"/>
+				<TrafficLight2 ID="06"/>
+			</Road>
+			<Road ID="02" type="3" arrow="5">
+				<TrafficLight0 ID="08"/>
+				<TrafficLight1 ID="10"/>
+			</Road>
+		</Intersection>
+		<Intersection ID="03">
+			<Road ID="02" type="3" arrow="5">
+				<TrafficLight0 ID="00"/>
+				<TrafficLight1 ID="02"/>
+			</Road>
+			<Road ID="00" type="0" arrow="4">
+				<TrafficLight0 ID="04"/>
+				<TrafficLight2 ID="06"/>
+			</Road>
+			<Road ID="01" type="2" arrow="3">
+				<TrafficLight1 ID="08"/>
+				<TrafficLight2 ID="10"/>
+			</Road>
+		</Intersection>
+		<Intersection ID="04">
+			<Road ID="00" type="0" arrow="4">
+				<TrafficLight0 ID="00"/>
+				<TrafficLight2 ID="02"/>
+			</Road>
+			<Road ID="01" type="2" arrow="3">
+				<TrafficLight1 ID="04"/>
+				<TrafficLight2 ID="06"/>
+			</Road>
+			<Road ID="02" type="3" arrow="5">
+				<TrafficLight0 ID="08"/>
+				<TrafficLight1 ID="10"/>
+			</Road>
+		</Intersection>
+		<Intersection ID="05">
+			<Road ID="00" type="0" arrow="4">
+				<TrafficLight0 ID="00"/>
+				<TrafficLight2 ID="02"/>
+			</Road>
+			<Road ID="01" type="2" arrow="3">
+				<TrafficLight1 ID="04"/>
+				<TrafficLight2 ID="06"/>
+			</Road>
+			<Road ID="02" type="3" arrow="5">
+				<TrafficLight0 ID="08"/>
+				<TrafficLight1 ID="10"/>
+			</Road>
+		</Intersection>
+		<Intersection ID="06">
+			<Road ID="02" type="3" arrow="5">
+				<TrafficLight0 ID="00"/>
+				<TrafficLight1 ID="02"/>
+			</Road>
+			<Road ID="00" type="0" arrow="4">
+				<TrafficLight0 ID="04"/>
+				<TrafficLight2 ID="06"/>
+			</Road>
+			<Road ID="01" type="2" arrow="3">
+				<TrafficLight1 ID="08"/>
+				<TrafficLight2 ID="10"/>
+			</Road>
+		</Intersection>
+		<Intersection ID="07">
+			<Road ID="02" type="3" arrow="5">
+				<TrafficLight0 ID="00"/>
+				<TrafficLight1 ID="02"/>
+			</Road>
+			<Road ID="00" type="0" arrow="4">
+				<TrafficLight0 ID="04"/>
+				<TrafficLight2 ID="06"/>
+			</Road>
+			<Road ID="01" type="2" arrow="3">
+				<TrafficLight1 ID="08"/>
+				<TrafficLight2 ID="10"/>
+			</Road>
+		</Intersection>
+	</TrafficLightPosition>
+</TrafficLightControl>
