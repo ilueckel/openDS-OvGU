@@ -91,6 +91,17 @@ public class SettingsLoader
 		Joystick_invertPedalAxis("settings:controllers/settings:joystick/settings:invertPedalAxis"),
 		Joystick_steeringSensitivityFactor("settings:controllers/settings:joystick/settings:steeringSensitivityFactor"),
 		Joystick_pedalSensitivityFactor("settings:controllers/settings:joystick/settings:pedalSensitivityFactor"),
+		
+		//Proseminar
+		Joystick2_controllerID("settings:controllers/settings:joystick2/settings:controllerID"),
+		Joystick2_steeringAxis("settings:controllers/settings:joystick2/settings:steeringAxis"),
+		Joystick2_invertSteeringAxis("settings:controllers/settings:joystick2/settings:invertSteeringAxis"),
+		Joystick2_pedalAxis("settings:controllers/settings:joystick2/settings:pedalAxis"),
+		Joystick2_invertPedalAxis("settings:controllers/settings:joystick2/settings:invertPedalAxis"),
+		Joystick2_steeringSensitivityFactor("settings:controllers/settings:joystick2/settings:steeringSensitivityFactor"),
+		Joystick2_pedalSensitivityFactor("settings:controllers/settings:joystick2/settings:pedalSensitivityFactor"),
+		//
+		
 		Mouse_scrollSensitivityFactor("settings:controllers/settings:mouse/settings:scrollSensitivityFactor"),
 		Mouse_minScrollZoom("settings:controllers/settings:mouse/settings:minScrollZoom"),
 		Mouse_maxScrollZoom("settings:controllers/settings:mouse/settings:maxScrollZoom");

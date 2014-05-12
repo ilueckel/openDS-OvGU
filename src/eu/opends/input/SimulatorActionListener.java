@@ -49,6 +49,8 @@ public class SimulatorActionListener implements ActionListener {
 	}
 
 	public void onAction(String binding, boolean value, float tpf) {
+		//Keyboard?
+		
 		if (binding.equals(KeyMapping.STEER_LEFT.getID())) {
 			if (value) {
 				steeringValue += .3f;
@@ -414,6 +416,10 @@ public class SimulatorActionListener implements ActionListener {
 		} else if (binding.equals(KeyMapping.LOG_EVENT.getID())) {
 			if (value && sim.getMyEventLogger() != null) {
 				sim.getMyEventLogger().logEvent();
+			}
+		}else if (binding.equals(KeyMapping.TOGGLE_GHOST_WHEEL.getID())) {
+			if (value) {
+				sim.toggleGhostWheelIsActive();
 			}
 		}
 	}

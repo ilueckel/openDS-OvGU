@@ -45,13 +45,15 @@ public class SimulatorAnalogListener implements AnalogListener
 	@Override
 	public void onAnalog(String binding, float value, float tpf) 
 	{
+		 //System.out.println(binding + " = " + value);
 		// haptic technology: start rumbling
-		//simulator.getInputManager().getJoysticks()[0].rumble(1.0f);
+		simulator.getInputManager().getJoysticks()[0].rumble(1.0f);
 		
 		// haptic technology: stop rumbling
 		//simulator.getInputManager().getJoysticks()[0].rumble(0.0f);
 		
-		if (binding.equals("Joy Left")) 
+		
+		if (isActionAllowed(binding, "Joy Left")) 
 		{
 			float steeringValue =  (value*steeringFactor)/tpf;
 			
@@ -64,9 +66,9 @@ public class SimulatorAnalogListener implements AnalogListener
 				simulator.getCar().unsteer();
 			else*/
 				simulator.getCar().steer(steeringValue/2.3f);
-		} 
+		}
 		
-		else if (binding.equals("Joy Right")) 
+		else if (isActionAllowed(binding ,"Joy Right")) 
 		{
 			float steeringValue = (-value*steeringFactor)/tpf;
 			
@@ -81,7 +83,7 @@ public class SimulatorAnalogListener implements AnalogListener
 				simulator.getCar().steer(steeringValue/2.3f);
 		} 
 		
-		else if (binding.equals("Joy Down")) 
+		else if (isActionAllowed(binding, "Joy Down")) 
 		{
 			float accelerationValue = (-value*pedalFactor)/tpf;
 			
@@ -97,7 +99,7 @@ public class SimulatorAnalogListener implements AnalogListener
 				simulator.getCar().setGasPedalIntensity(accelerationValue);
 		} 
 		
-		else if (binding.equals("Joy Up")) 
+		else if (isActionAllowed(binding, "Joy Up")) 
 		{
 			float brakeValue = (value*pedalFactor)/tpf;
 			
@@ -113,6 +115,24 @@ public class SimulatorAnalogListener implements AnalogListener
 				simulator.getCar().setBrakePedalPressIntensity(brakeValue);
 			} 
 		}
+	}
+	
+	/**
+	 * Checks the source of the binding ('Joy Up', etc.) and returns true if the mapped binding is allowed to forward its values.
+	 * For example: Wheel 1 is active and binding is 'Joy Up2' returns false.
+	 * Wheel 2 is active and binding is 'Joy Up2' returns true
+	 * @param binding
+	 * @param name
+	 * @return
+	 */
+	private boolean isActionAllowed(String binding, String name)
+	{
+		if (simulator.getGhostWheelIsActive()){
+			return binding.equals(name+"2");
+		}
+		else
+			return binding.equals(name);
+			
 	}
 
 }

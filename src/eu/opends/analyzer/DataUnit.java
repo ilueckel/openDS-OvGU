@@ -34,7 +34,7 @@ public class DataUnit implements Serializable {
 	private Date date;
 	private String description;
 	private int lightIntensity;
-	private boolean enginOn, blinkerLeft, blinkerRight;
+	private boolean enginOn, blinkerLeft, blinkerRight, ghostWheelIsActive;
 
 	/**
 	 * The default constructor.
@@ -63,7 +63,7 @@ public class DataUnit implements Serializable {
 	public DataUnit(Date date, double xpos, double ypos, double zpos,
 			double xrot, double yrot, double zrot, double wrot, double speed,
 			double steeringWheelPos, double gasPedalPos, double brakePedalPos,
-			boolean enginOn, int lightIntensity, boolean blinkerLeft, boolean blinkerRight) {
+			boolean enginOn, int lightIntensity, boolean blinkerLeft, boolean blinkerRight, boolean isGhostWheelActive) {
 		setDate(date);
 		setSpeed(speed);
 		setXpos(xpos);
@@ -80,6 +80,7 @@ public class DataUnit implements Serializable {
 		setLightIntensity(lightIntensity);
 		setBlinkerLeft(blinkerLeft);
 		setBlinkerRight(blinkerRight);
+		setGhostWheelIsActive(isGhostWheelActive);
 	}
 
 	public DataUnit(Date date, String description) {
@@ -297,6 +298,14 @@ public class DataUnit implements Serializable {
 
 	public void setBlinkerRight(boolean blinkerRight) {
 		this.blinkerRight = blinkerRight;
+	}
+	
+	public void setGhostWheelIsActive(boolean GhostWheelIsActive) {
+		this.ghostWheelIsActive = GhostWheelIsActive;
+	}
+	
+	public boolean getGhostWheelIsActive() {
+		return this.ghostWheelIsActive;
 	}
 
 }

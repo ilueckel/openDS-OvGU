@@ -73,6 +73,7 @@ public class Simulator extends SimulationBasics
     private Nifty nifty;
     private boolean drivingTaskGiven = false;
     private boolean initializationFinished = false;
+    private boolean GhostWheelIsActive = false;
     
     private static String driverName;
     
@@ -195,6 +196,16 @@ public class Simulator extends SimulationBasics
 	public static String getOutputFolder()
 	{
 		return outputFolder;
+	}
+	
+	public boolean getGhostWheelIsActive()
+	{
+		return GhostWheelIsActive;
+	}
+	public void toggleGhostWheelIsActive()
+	{
+		GhostWheelIsActive = !GhostWheelIsActive;
+		PanelCenter.getMessageBox().addMessage("Autonomes Fahren ist " + GhostWheelIsActive, 5);
 	}
 	
 	
@@ -348,6 +359,9 @@ public class Simulator extends SimulationBasics
 		}
 		
 		initializationFinished = true;
+		
+		//
+		
     }
 
 

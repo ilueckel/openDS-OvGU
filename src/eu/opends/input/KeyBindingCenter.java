@@ -130,6 +130,7 @@ public class KeyBindingCenter
         inputManager.addMapping("DPAD Up", new JoyAxisTrigger(0, JoyInput.AXIS_POV_Y, false));
         
         
+        /*
         if(inputManager.getJoysticks().length > 0 && inputManager.getJoysticks()[0].getName().equals("Logitech Driving Force GT USB"))
         {
         	inputManager.addMapping("Joy Up", new JoyAxisTrigger(0, 2, false));
@@ -143,7 +144,7 @@ public class KeyBindingCenter
         	inputManager.addMapping("Joy Right", new JoyAxisTrigger(0, 0, false));
         	inputManager.addMapping("Joy Down", new JoyAxisTrigger(0, 1, true));
         	inputManager.addMapping("Joy Up", new JoyAxisTrigger(0, 1, false));
-        }
+        }*/
         
         
         SettingsLoader settingsLoader = Simulator.getSettingsLoader();
@@ -158,8 +159,19 @@ public class KeyBindingCenter
     	inputManager.addMapping("Joy Right", new JoyAxisTrigger(controllerID, steeringAxis, invertSteeringAxis));
     	inputManager.addMapping("Joy Left", new JoyAxisTrigger(controllerID, steeringAxis, !invertSteeringAxis));
     	
+    	controllerID = settingsLoader.getSetting(Setting.Joystick2_controllerID, -1);
+        pedalAxis = settingsLoader.getSetting(Setting.Joystick2_pedalAxis, 2);
+        invertPedalAxis = settingsLoader.getSetting(Setting.Joystick2_invertPedalAxis, false);
+        steeringAxis = settingsLoader.getSetting(Setting.Joystick2_steeringAxis, 1);
+        invertSteeringAxis = settingsLoader.getSetting(Setting.Joystick2_invertSteeringAxis, false);
+        
+        inputManager.addMapping("Joy Up2", new JoyAxisTrigger(controllerID, pedalAxis, invertPedalAxis));
+    	inputManager.addMapping("Joy Down2", new JoyAxisTrigger(controllerID, pedalAxis, !invertPedalAxis));
+    	inputManager.addMapping("Joy Right2", new JoyAxisTrigger(controllerID, steeringAxis, invertSteeringAxis));
+    	inputManager.addMapping("Joy Left2", new JoyAxisTrigger(controllerID, steeringAxis, !invertSteeringAxis));
+    	
         inputManager.addListener(new SimulatorAnalogListener(simulator), "DPAD Left", "DPAD Right", 
-        		"DPAD Down", "DPAD Up", "Joy Left", "Joy Right", "Joy Down", "Joy Up");
+        		"DPAD Down", "DPAD Up", "Joy Left", "Joy Right", "Joy Down", "Joy Up", "Joy Left2", "Joy Right2", "Joy Down2", "Joy Up2");
 	}
 	
 	

@@ -115,7 +115,7 @@ public class DataWriter
 			out.write("Used Format = Time (ms): Position (x,y,z) : Rotation (x,y,z,w) :"
 					+ " Speed (km/h) : Steering Wheel Position [-1,1] : Gas Pedal Position :"
 					+ " Brake Pedal Position : Engine (On) : light Intensity : TurnSignalLeft :"
-					+ " TurnSignalRight" + newLine);
+					+ " TurnSignalRight" + " IsGhostWheelActive " + newLine);
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -146,14 +146,14 @@ public class DataWriter
 					Math.round(car.getRotation().getY() * 10000) / 10000.,
 					Math.round(car.getRotation().getZ() * 10000) / 10000.,
 					Math.round(car.getRotation().getW() * 10000) / 10000.,
-					car.getCurrentSpeedKmhRounded(), Math.round(car
-							.getSteeringWheelState() * 100000) / 100000., 
-							 car.getGasPedalPressIntensity(), car.getBrakePedalPressIntensity(),
-							 car.isEngineOn(),
-							 car.getLightIntensity(),
-							 car.getTurnSignal() == TurnSignalState.BOTH || car.getTurnSignal() == TurnSignalState.LEFT ? true : false,
-							 car.getTurnSignal() == TurnSignalState.BOTH || car.getTurnSignal() == TurnSignalState.RIGHT ? true : false  
-							);
+					car.getCurrentSpeedKmhRounded(), Math.round(car.getSteeringWheelState() * 100000) / 100000., 
+					car.getGasPedalPressIntensity(), car.getBrakePedalPressIntensity(),
+					car.isEngineOn(),
+					car.getLightIntensity(),
+					car.getTurnSignal() == TurnSignalState.BOTH || car.getTurnSignal() == TurnSignalState.LEFT ? true : false,
+					car.getTurnSignal() == TurnSignalState.BOTH || car.getTurnSignal() == TurnSignalState.RIGHT ? true : false,
+					car.getSimulator().getGhostWheelIsActive()
+				);
 
 			Runnable r = new Runnable()
 			{
@@ -181,11 +181,11 @@ public class DataWriter
 	public void write(Date curDate, double x, double y, double z, double xRot,
 			double yRot, double zRot, double wRot, double linearSpeed,
 			double steeringWheelState, double gasPedalState, double brakePedalState,
-			boolean enginOn, int lightIntensity, boolean blinkerLeft, boolean blinkerRight) 
+			boolean enginOn, int lightIntensity, boolean blinkerLeft, boolean blinkerRight, boolean isGhostWheelActive) 
 	{
 		DataUnit row = new DataUnit(curDate, x, y, z, xRot, yRot, zRot, wRot,
 				linearSpeed, steeringWheelState, gasPedalState, brakePedalState,
-				enginOn, lightIntensity, blinkerLeft, blinkerRight);
+				enginOn, lightIntensity, blinkerLeft, blinkerRight, isGhostWheelActive);
 		this.write(row);
 
 	}
@@ -215,7 +215,7 @@ public class DataWriter
 						+ r.getSteeringWheelPos() + ":" + r.getPedalPos() + ":"
 						+ r.isBreaking() + ":" + r.isEnginOn() +":"
 						+ r.getLightIntensity() + ":" + r.isBlinkerLeft() +":"
-						+ r.isBlinkerRight() + newLine
+						+ r.isBlinkerRight() + ":" + r.getGhostWheelIsActive() + newLine
 				// + r.getRacingLineDistance()
 						// + ":"
 						// + r.getFuelConsumption()
