@@ -155,6 +155,7 @@ public class DataWriter
 					car.getSimulator().getGhostWheelIsActive()
 				);
 
+			/*
 			Runnable r = new Runnable()
 			{
 			    @Override
@@ -166,6 +167,8 @@ public class DataWriter
 
 			Thread t = new Thread(r);
 			t.start();
+			*/
+			webcamGrabber.captureImage(Long.toString(curDate.getTime()));
 			
 			lastAnalyzerDataSave = curDate;
 		}

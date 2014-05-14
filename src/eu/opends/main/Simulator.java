@@ -523,9 +523,9 @@ public class Simulator extends SimulationBasics
 			if(settingsControllerServer != null)
 				settingsControllerServer.close();
 			
-			dataWriter.micRecorder.finish();
-			
 			dataWriter.webcamGrabber.stop();
+			
+			dataWriter.micRecorder.finish();
 			
 			//initDrivingTaskSelectionGUI();
 		}

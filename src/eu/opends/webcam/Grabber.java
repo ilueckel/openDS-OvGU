@@ -8,6 +8,8 @@ import static com.googlecode.javacv.cpp.videoInputLib.*;
 import com.googlecode.javacv.FrameGrabber;
 import com.googlecode.javacv.VideoInputFrameGrabber;
 import com.googlecode.javacv.cpp.opencv_core.IplImage;
+import com.googlecode.javacv.CanvasFrame;
+
 
 /*
  * 
@@ -15,18 +17,37 @@ import com.googlecode.javacv.cpp.opencv_core.IplImage;
 public class Grabber {
 	private FrameGrabber[] grabber;
 	private String OutputFolder;
+	
+	
+	//IplImage image;
+    //CanvasFrame canvas = new CanvasFrame("Web Cam");
+	
 
 	public Grabber(String outputFolder) {
 		OutputFolder = outputFolder;
 	}
 
-	private void captureImage(int camId, String timeStamp) {
+	private void captureImage(final int camId, final String timeStamp) {
 		try {
-			IplImage img;
+			final IplImage img;
 			img = grabber[camId].grab();
 			if (img != null) {
-				cvSaveImage(OutputFolder + "/" + camId + "/" + timeStamp
-						+ "-capture.jpg", img);
+				
+				Runnable r = new Runnable()
+				{
+				    @Override
+				    public void run()
+				    {
+				    	cvSaveImage(OutputFolder + "/" + camId + "/" + timeStamp + "-capture.jpg", img);
+				    }
+				};
+
+				Thread t = new Thread(r);
+				t.start();
+				
+				
+				//canvas.showImage(img);
+				//canvas.setTitle(timeStamp);
 			}
 		} catch (Exception e) {
 		}
@@ -69,6 +90,24 @@ public class Grabber {
 				e.printStackTrace();
 			}
 		}
+		
+		/*FrameGrabber grabber = new VideoInputFrameGrabber(0); 
+        int i=0;
+        try {
+            grabber.start();
+            IplImage img;
+            while (true) {
+                img = grabber.grab();
+                if (img != null) {
+                    //cvFlip(img, img, 1);// l-r = 90_degrees_steps_anti_clockwise
+                    //cvSaveImage((i++)+"-capture.jpg", img);
+                    // show image on window
+                    canvas.showImage(img);
+                }
+                 //Thread.sleep(INTERVAL);
+            }
+        } catch (Exception e) {
+        }*/
 	}
 
 	/*
