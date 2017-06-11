@@ -26,3 +26,5 @@ For testing purposes there can be used a second steering wheel to emulate a self
 ```
  
  You can switch between steering wheel 1 and steering wheel 2 with the `B` keyboard key. A notification will be shown.
+ 
+ Send Spam Mails to belina@isurfer.de
